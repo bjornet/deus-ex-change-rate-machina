@@ -4,7 +4,6 @@
 # Vite
 /dist/
 /.vite/
-/vite.config.js
 
 # Storybook
 /.storybook-out/
@@ -17,7 +16,6 @@
 .prettierignore
 
 # TypeScript
-/tsconfig.json
 /tsconfig.tsbuildinfo
 
 # pnpm specific files
