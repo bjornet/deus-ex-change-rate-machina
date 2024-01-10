@@ -8,5 +8,12 @@
   },
   "keywords": [],
   "author": "Björn Christensson",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.11"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
