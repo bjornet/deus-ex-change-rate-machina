@@ -1,0 +1,36 @@
+# Node modules
+/node_modules/
+
+# Vite
+/dist/
+/.vite/
+/vite.config.js
+
+# Storybook
+/.storybook-out/
+/storybook-static/
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettierignore
+
+# TypeScript
+/tsconfig.json
+/tsconfig.tsbuildinfo
+
+# pnpm specific files
+/pnpm-debug.log
+
+# IDE specific files
+/.idea/
+/.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
