@@ -12,18 +12,11 @@
 # ESLint
 .eslintcache
 
-# Prettier
-.prettierignore
-
 # TypeScript
 /tsconfig.tsbuildinfo
 
 # pnpm specific files
 /pnpm-debug.log
-
-# IDE specific files
-/.idea/
-/.vscode/
 
 # OS-specific files
 .DS_Store
@@ -32,3 +25,6 @@ Thumbs.db
 # Logs
 logs
 *.log
+
+# Misc
+/tmp
