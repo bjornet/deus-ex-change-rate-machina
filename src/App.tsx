@@ -9,8 +9,8 @@ const App = () => {
 
   return (
     <div>
-      <input type="text" placeholder="Name" ref={inputRef} />
       <h1>React TypeScript</h1>
+      <input type="text" placeholder="Name" ref={inputRef} />
     </div>
   );
 };
