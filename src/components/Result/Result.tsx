@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Maybe } from "types/types";
+import { Pill } from "components/Pill";
 import { localizeNumber } from "../../utils/localizeNumber";
 
 type ResultProps = {
@@ -32,7 +33,7 @@ const Result: FC<ResultProps> = ({
     <div className="text-xl mt-8 p-4 border-2 border-slate-200 rounded-md ">
       {localizeNumber("sv", from, amount, "decimal", decimals)} {from}
       <div className="text-4xl">
-        = {result} {to}
+        = {result} <Pill color="blue" value={to} />
       </div>
     </div>
   ) : null;
