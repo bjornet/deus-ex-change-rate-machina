@@ -68,3 +68,6 @@ Run `pnpm build` to build the app for production to the dist folder.
 
 1. **Component Development** A great improvment to the component development would be to add [Storybook Docs](https://storybook.js.org/docs/react/writing-docs/introduction) to the project. This would allow us to document and develop components in isolation. This is ivaluable when working in a team.
 2. **Stability** The codebase would gain a lot from adding a pre-commit hook that runs a baseline of tests and linting. This would ensure that the codebase is stable and consistent. Husky and lint-staged would be a great fit for this.
+3. **Error Handling** The app is missing error handling. This is a must for a production ready app. The app should handle errors from the API and display a user friendly error message.
+4. **Accessibility** The app is missing accessibility features. This is a must for a production ready app. The app should be accessible for all users.
+5. **Performance** The API does not have to be called again upon page refresh. The app could store the exchange rates in local storage (with a timestamp) and use them on page refresh. This would improve the performance of the app.
