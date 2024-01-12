@@ -20,6 +20,10 @@
       "store/*": ["./src/store/*"],
       "context": ["./src/context"],
       "context/*": ["./src/context/*"],
+      "hooks": ["./src/hooks"],
+      "hooks/*": ["./src/hooks/*"],
+      "utils": ["./src/utils"],
+      "utils/*": ["./src/utils/*"],
     }
   },
   "include": ["src"]
