@@ -38,11 +38,11 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
     () => async () => {
       const UID = `currencies-${dateToday}}`;
 
-      const resp = await clientCache(UID, fetchCurrencies);
+      const response = await clientCache(UID, fetchCurrencies);
 
-      if (!resp) return;
+      if (!response) return;
 
-      setCurrencies(Object.keys(resp));
+      setCurrencies(Object.keys(response));
     },
     [],
   );
@@ -57,11 +57,11 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
     () => async () => {
       const UID = `rates-${dateToday}}`;
 
-      const resp = await clientCache(UID, fetchLatestRates);
+      const response = await clientCache(UID, fetchLatestRates);
 
-      if (!resp) return;
+      if (!response || !response?.rates) return;
 
-      setRates(resp);
+      setRates(response.rates);
     },
     [],
   );
