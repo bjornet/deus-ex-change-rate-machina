@@ -1,0 +1,1 @@
+export { storeManager } from "./storeManager";
