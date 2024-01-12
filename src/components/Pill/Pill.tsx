@@ -1,6 +1,8 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
+import { bgColorClasses, textColorClasses } from "./config";
 
-type PillProps = PropsWithChildren<{
+type PillProps = {
+  value: string;
   color:
     | "slate"
     | "gray"
@@ -24,10 +26,20 @@ type PillProps = PropsWithChildren<{
     | "fuchsia"
     | "pink"
     | "rose";
-}>;
+};
 
-const Pill: FC<PillProps> = ({ children, color = "blue" }) => (
-  <span className={`p-2 bg-${color}-400`}>{children}</span>
-);
+const defaultBgColorClass = bgColorClasses.blue;
+const defaultTextColorClass = textColorClasses.blue;
+
+const Pill: FC<PillProps> = ({ value, color = "blue" }) => {
+  const bgColorClass = bgColorClasses[color] || defaultBgColorClass;
+  const textColorClass = textColorClasses[color] || defaultTextColorClass;
+
+  return (
+    <span className={`${bgColorClass} ${textColorClass} px-2 py-1 rounded-md`}>
+      {value}
+    </span>
+  );
+};
 
 export { Pill };
