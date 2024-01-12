@@ -17,18 +17,20 @@ const Select: FC<SelectProps> = ({
 }) => (
   <label className="block mb-2 font-bold" htmlFor={id}>
     {label}
-    <select
-      className="block w-full p-2 border border-gray-300 rounded-md text-slate-600"
-      id={id}
-      onChange={onChange}
-      value={selectedValue}
-    >
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+    <div className="block w-full pr-2 border rounded-md border-gray-300 bg-white text-slate-600">
+      <select
+        className="w-full h-10 p-2 rounded-md outline-none"
+        id={id}
+        onChange={onChange}
+        value={selectedValue}
+      >
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
   </label>
 );
 
