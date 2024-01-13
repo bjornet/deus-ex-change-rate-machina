@@ -71,3 +71,8 @@ Run `pnpm build` to build the app for production to the dist folder.
 3. **Error Handling** The app is missing error handling. This is a must for a production ready app. The app should handle errors from the API and display a user friendly error message.
 4. **Accessibility** The app is missing accessibility features. This is a must for a production ready app. The app should be accessible for all users.
 5. **Performance** The API does not have to be called again upon page refresh. The app could store the exchange rates in local storage (with a timestamp) and use them on page refresh. This would improve the performance of the app.
+
+## Whats features are missing?
+
+**Development of exchange rates over time** I bumped in to restrictions with the free API key. This could have been eleviated by using a paid API key or by mocking the answer from the API.
+I have added notes in the code where I would have implemented this feature and some reasoning around it.
