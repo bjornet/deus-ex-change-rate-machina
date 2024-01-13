@@ -15,6 +15,7 @@ import {
 import { Maybe } from "types/types";
 import { storeManager } from "store";
 import { StoreSegments } from "store/enums";
+import { fetchHistorical } from "api/fetchHistorical";
 import { targetCurrenciesReducer } from "./actions";
 import {
   TargetCurrenciesAction,
@@ -63,12 +64,15 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
   const [currencies, setCurrencies] = useState<
     ExchangeRatesContextType["currencies"]
   >([]);
+  const [historical, setHistorical] = useState<
+    ExchangeRatesContextType["rates"]
+  >({});
 
   /**
    * - fetch currency codes
    * - store in client cache to avoid unnecessary API calls
-   * - set the rates context value
-   * @todo Add currencies to the storage with a timestamp to avoid unnecessary API calls
+   * - set the currency codes context value
+   * @todo Add currencies to the storage with a timestamp to avoid unnecessary API calls on page refresh
    */
   const initCurrencies = useMemo(
     () => async () => {
@@ -87,7 +91,7 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
    * - fetch rates
    * - store in client cache to avoid unnecessary API calls
    * - set the rates context value
-   * @todo Add rates to the storage with a timestamp to avoid unnecessary API calls
+   * @todo Add rates to the storage with a timestamp to avoid unnecessary API calls on page refresh
    */
   const initRates = useMemo(
     () => async () => {
@@ -98,6 +102,30 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
       if (!response || !response?.rates) return;
 
       setRates(response.rates);
+    },
+    [],
+  );
+
+  /**
+   * - fetch historical rates
+   * - store in client cache to avoid unnecessary API calls
+   * - set the historical rates context value
+   * @todo Add historical rates to the storage with a timestamp to avoid unnecessary API calls on page refresh
+   */
+  const initHistoricalRates = useMemo(
+    () => async (date: string) => {
+      const UID = `historical-rates-${date}}`;
+
+      /**
+       * @note this endpoint is not useful if we dont have a paid plan
+       */
+      const response = await clientCache(UID, () =>
+        fetchHistorical(date.split("T")[0]),
+      );
+
+      if (!response || !response?.rates) return;
+
+      setHistorical(response.rates);
     },
     [],
   );
@@ -119,6 +147,15 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
 
     initRates();
   }, [rates, initRates]);
+
+  /**
+   * Fetch historical rates on mount
+   */
+  useEffect(() => {
+    if (Object.keys(historical).length > 0) return;
+
+    initHistoricalRates(dateToday);
+  }, [historical, initHistoricalRates]);
 
   const memoizedValue = useMemo(
     () => ({
