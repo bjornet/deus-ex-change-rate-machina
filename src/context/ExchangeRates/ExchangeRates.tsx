@@ -2,27 +2,63 @@ import { fetchLatestRates } from "api";
 import { clientCache } from "api/clientCache";
 import { fetchCurrencies } from "api/fetchCurrencies";
 import {
+  Dispatch,
   FC,
   PropsWithChildren,
   createContext,
   useContext,
   useEffect,
   useMemo,
+  useReducer,
   useState,
 } from "react";
 import { Maybe } from "types/types";
+import { storeManager } from "store";
+import { StoreSegments } from "store/enums";
+import { targetCurrenciesReducer } from "./actions";
+import {
+  TargetCurrenciesAction,
+  TargetCurrenciesReducer,
+} from "./actions/types";
 
 type ExchangeRatesContextType = {
   rates: Record<string, number>;
   currencies: string[];
+  targetCurrencies: ReturnType<TargetCurrenciesReducer>;
+  setTargetCurrencies: Dispatch<TargetCurrenciesAction>;
 };
+
+/**
+ * @todo Make it possible to change the percision of the decimals
+ * by adding it to the context and add a handle to change it
+ */
+export const TARGET_DECIMALS_PRECISION = 4;
 
 const ExchangeRatesContext =
   createContext<Maybe<ExchangeRatesContextType>>(null);
 
 const dateToday = new Date().toISOString();
 
+const storedTargetCurrencies = storeManager.get(
+  StoreSegments.CURRENCY_SELECTED_TARGETS,
+);
+
 export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [targetCurrencies, setTargetCurrencies] = useReducer(
+    targetCurrenciesReducer,
+    storedTargetCurrencies || [],
+  );
+
+  /**
+   * @enhancement We should not store the target currencies in the store if they are not changed
+   * - add something like https://ramdajs.com/docs/#equals
+   */
+  useEffect(() => {
+    if (targetCurrencies.length === 0) return;
+
+    storeManager.set(StoreSegments.CURRENCY_SELECTED_TARGETS, targetCurrencies);
+  }, [targetCurrencies]);
+
   const [rates, setRates] = useState<ExchangeRatesContextType["rates"]>({});
   const [currencies, setCurrencies] = useState<
     ExchangeRatesContextType["currencies"]
@@ -88,8 +124,10 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
     () => ({
       rates,
       currencies,
+      targetCurrencies,
+      setTargetCurrencies,
     }),
-    [rates, currencies],
+    [rates, currencies, targetCurrencies, setTargetCurrencies],
   );
 
   return (
