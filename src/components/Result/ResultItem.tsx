@@ -24,33 +24,33 @@ const ResultItem: FC<ResultItemProps> = ({
   const targetValue = amount * exchangeRate;
 
   return (
-    <div className="text-4xl mt-2 p-4 border-2 border-slate-200 rounded-md relative min-h-10 box-content">
+    <div className="text-4xl mt-2 border-2 border-slate-200 rounded-md relative min-h-10 box-content">
       {targetValue ? (
-        <>
-          <ResultItemClose onClick={handleClick} />
-          <div className="grid gap-2">
-            <div>
-              ={" "}
-              {localizeNumber(
-                "sv",
-                currency,
-                targetValue,
-                "decimal",
-                TARGET_DECIMALS_PRECISION,
-              )}{" "}
-              <Pill color="blue" value={currency} />
-            </div>
-            <div className="text-sm">
-              <span className="text-yellow-500">+13,93%</span> since March 26th,
-              2015
-            </div>
+        <div className="grid gap-2 grid-cols-[1fr_5fr]">
+          <div className="row-span-2">
+            <ResultItemClose onClick={handleClick} />
           </div>
-        </>
+          <div className="pt-4 pr-3">
+            ={" "}
+            {localizeNumber(
+              "sv",
+              currency,
+              targetValue,
+              "decimal",
+              TARGET_DECIMALS_PRECISION,
+            )}{" "}
+            <Pill color="blue" value={currency} />
+          </div>
+          <div className="text-sm pr-3 pb-2">
+            <span className="text-yellow-500">+13,93%</span> since March 26th,
+            2015
+          </div>
+        </div>
       ) : (
-        <>
+        <div className="grid gap-2">
           <ResultItemClose onClick={handleClick} />
           <div>N/A</div>
-        </>
+        </div>
       )}
     </div>
   );
