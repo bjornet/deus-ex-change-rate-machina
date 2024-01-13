@@ -1,6 +1,6 @@
 import { Exchange } from "components/Exchange";
 import { Header } from "components/Header";
-import { ExchangeRatesProvider } from "context/ExchangeRates";
+import { ExchangeRatesProvider } from "context";
 
 const App = () => (
   <div
