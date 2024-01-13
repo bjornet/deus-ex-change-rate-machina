@@ -1,42 +1,45 @@
 import { FC } from "react";
-import { Maybe } from "types/types";
 import { Pill } from "components/Pill";
-import { localizeNumber } from "../../utils/localizeNumber";
+import { useExchangeRates } from "context";
+import { getExchangeRate } from "components/Exchange/actions";
+import { localizeNumber } from "utils";
+import { ResultItem } from "./ResultItem";
 
 type ResultProps = {
   amount: number;
   from: string;
-  to: string;
-  exchangeRate: Maybe<number>;
-  decimals?: number;
 };
 
-const Result: FC<ResultProps> = ({
-  amount,
-  from,
-  to,
-  exchangeRate,
-  decimals = 4,
-}) => {
-  /**
-   * @todo extract locale ("sv") to a context or read it from the browser
-   */
+const Result: FC<ResultProps> = ({ amount, from }) => {
+  const { rates, targetCurrencies, setTargetCurrencies } = useExchangeRates();
 
-  const result = exchangeRate
-    ? localizeNumber("sv", to, amount * exchangeRate, "decimal", decimals)
-    : null;
+  const handleClick = (currency: string) => {
+    setTargetCurrencies({
+      type: "remove",
+      payload: currency,
+    });
+  };
 
   /**
    * @enhancment Add a skeleton loader to show while waiting for result
    */
-  return result && result !== "N/A" ? (
-    <div className="text-xl mt-8 p-4 border-2 border-slate-200 rounded-md ">
-      {localizeNumber("sv", from, amount, "decimal", decimals)} {from}
-      <div className="text-4xl">
-        = {result} <Pill color="blue" value={to} />
+  return (
+    <div className="mt-4 text-2xl text-right">
+      <div className="pr-4">
+        {localizeNumber("sv", from, amount, "decimal", 0)}{" "}
+        <Pill color="green" value={from} />
       </div>
+      {targetCurrencies.map((targetCurrency) => (
+        <ResultItem
+          key={targetCurrency}
+          amount={amount}
+          currency={targetCurrency}
+          exchangeRate={getExchangeRate(rates[from], rates[targetCurrency])}
+          onClick={handleClick}
+        />
+      ))}
     </div>
-  ) : null;
+  );
 };
 
 export { Result };
