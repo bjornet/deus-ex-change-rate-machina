@@ -28,16 +28,22 @@ const ResultItem: FC<ResultItemProps> = ({
       {targetValue ? (
         <>
           <ResultItemClose onClick={handleClick} />
-          <div>
-            ={" "}
-            {localizeNumber(
-              "sv",
-              currency,
-              targetValue,
-              "decimal",
-              TARGET_DECIMALS_PRECISION,
-            )}{" "}
-            <Pill color="blue" value={currency} />
+          <div className="grid gap-2">
+            <div>
+              ={" "}
+              {localizeNumber(
+                "sv",
+                currency,
+                targetValue,
+                "decimal",
+                TARGET_DECIMALS_PRECISION,
+              )}{" "}
+              <Pill color="blue" value={currency} />
+            </div>
+            <div className="text-sm">
+              <span className="text-yellow-500">+13,93%</span> since March 26th,
+              2015
+            </div>
           </div>
         </>
       ) : (
