@@ -1,6 +1,6 @@
 import { Pill } from "components/Pill";
 import { TARGET_DECIMALS_PRECISION } from "context/ExchangeRates/ExchangeRates";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { localizeNumber } from "utils";
 import { ResultItemClose } from "./ResultItemClose";
 
@@ -17,15 +17,25 @@ const ResultItem: FC<ResultItemProps> = ({
   exchangeRate,
   onClick,
 }) => {
+  const [showItem, setShowItem] = useState(false);
+
   const handleClick = () => {
     onClick(currency);
   };
 
   const targetValue = amount * exchangeRate;
 
+  useEffect(() => {
+    setShowItem(true);
+  }, [targetValue]);
+
   return (
-    <div className="text-4xl mt-2 border-2 border-slate-200 rounded-md relative min-h-10 box-content">
-      {targetValue ? (
+    <div
+      className={`transition-opacity duration-150 ease-in ${
+        showItem ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div className="text-4xl mt-2 border-2 border-slate-200 rounded-md relative min-h-10 box-content">
         <div className="grid gap-2 grid-cols-[1fr_5fr]">
           <div className="row-span-2 text-left">
             <ResultItemClose onClick={handleClick} />
@@ -46,12 +56,7 @@ const ResultItem: FC<ResultItemProps> = ({
             2015
           </div>
         </div>
-      ) : (
-        <div className="grid gap-2">
-          <ResultItemClose onClick={handleClick} />
-          <div>N/A</div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
