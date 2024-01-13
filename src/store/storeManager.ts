@@ -14,7 +14,7 @@ export const storeManager = {
   remove: (key: string) => {
     localStorage.removeItem(key);
   },
-  clear: () => {
+  flush: () => {
     localStorage.clear();
   },
 };
