@@ -43,40 +43,42 @@ const Exchange = () => {
   };
 
   return (
-    <div>
-      <Input
-        id="amount"
-        value={amount > 0 ? amount.toString() : ""}
-        label="Amount"
-        placeholder='e.g. "100"'
-        onChange={handleAmountChange}
-      />
-      {
-        /**
-         * @enhancment Add a skeleton loader to show while waiting for currencies
-         */
-        currencies ? (
-          <>
-            <Select
-              id="source-currency"
-              label="From"
-              onChange={handleSourceCurrencyChange}
-              options={currencies}
-              selectedValue={sourceCurrencySelected}
-            />
+    <div className="grid gap-4">
+      <div className="bg-sky-800 rounded-md px-8 py-6">
+        <Input
+          id="amount"
+          value={amount > 0 ? amount.toString() : ""}
+          label="Amount"
+          placeholder='e.g. "100"'
+          onChange={handleAmountChange}
+        />
+        {
+          /**
+           * @enhancment Add a skeleton loader to show while waiting for currencies
+           */
+          currencies ? (
+            <>
+              <Select
+                id="source-currency"
+                label="From"
+                onChange={handleSourceCurrencyChange}
+                options={currencies}
+                selectedValue={sourceCurrencySelected}
+              />
 
-            <Select
-              id="target-currency"
-              label="To (select one or more)"
-              onChange={handleTargetCurrencyChange}
-              options={currencies}
-              selectedValue={targetCurrencySelected}
-            />
-          </>
-        ) : (
-          <div>Loading...</div>
-        )
-      }
+              <Select
+                id="target-currency"
+                label="To (select one or more)"
+                onChange={handleTargetCurrencyChange}
+                options={currencies}
+                selectedValue={targetCurrencySelected}
+              />
+            </>
+          ) : (
+            <div>Loading...</div>
+          )
+        }
+      </div>
 
       <Result amount={amount} from={sourceCurrencySelected} />
     </div>

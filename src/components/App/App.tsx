@@ -8,7 +8,7 @@ const App = () => (
     className="bg-slate-800 grid auto-rows-min h-screen text-slate-300"
   >
     <Header
-      title="Exchange Rate Determinator"
+      title="Deus ex-Change Rate Machina"
       tag="Exchange rates made easy!"
     />
     <main className="px-8 py-4">
