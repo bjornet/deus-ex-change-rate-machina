@@ -51,6 +51,12 @@ const ResultItem: FC<ResultItemProps> = ({
             )}{" "}
             <Pill color="blue" value={currency} />
           </div>
+          {/**
+           * @note This is psuedo code. It's here to demonstrate how we could show the change in exchange rate over time
+           * - this is a derivitive of the historical exchange rates and the main (default. latest) exchange rate
+           * - we could also show a graph of the exchange rate over time
+           * - this would be a good place to use a charting library like recharts or react-vis
+           */}
           <div className="text-sm pr-3 pb-2">
             <span className="text-yellow-500">+13,93%</span> since March 26th,
             2015
