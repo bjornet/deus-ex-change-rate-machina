@@ -1,0 +1,1 @@
+export { targetCurrenciesReducer } from "./targetCurrenciesReducer";
