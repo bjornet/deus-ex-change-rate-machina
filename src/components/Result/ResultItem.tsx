@@ -27,7 +27,7 @@ const ResultItem: FC<ResultItemProps> = ({
     <div className="text-4xl mt-2 border-2 border-slate-200 rounded-md relative min-h-10 box-content">
       {targetValue ? (
         <div className="grid gap-2 grid-cols-[1fr_5fr]">
-          <div className="row-span-2">
+          <div className="row-span-2 text-left">
             <ResultItemClose onClick={handleClick} />
           </div>
           <div className="pt-4 pr-3">

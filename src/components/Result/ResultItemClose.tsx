@@ -6,7 +6,7 @@ type ResultItemCloseProps = {
 
 const ResultItemClose: FC<ResultItemCloseProps> = ({ onClick }) => (
   <button
-    className="text-2xl p-2 h-full w-full text-white rounded-s-sm bg-red-400 hover:bg-red-500"
+    className="text-2xl p-2 h-full w-full max-w-24 text-white rounded-s-sm bg-red-400 hover:bg-red-500"
     type="button"
     onClick={onClick}
   >
