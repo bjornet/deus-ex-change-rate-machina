@@ -28,8 +28,8 @@ This is a simple exchange rate calculator that uses the [ExchangeRate-API](https
 ### 1. Clone the repository
 
 ```sh
-git clone https://github.com:bjornet/exchange-rates.git
-cd exchange-rates
+git clone https://github.com/bjornet/deus-ex-change-rate-machina.git
+cd deus-ex-change-rate-machina
 ```
 
 ### 2. Install dependencies
@@ -40,9 +40,9 @@ pnpm install
 
 ## Development
 
-**IMPORTANT!** This app is not ready for production. There is no secure way to add API secrets to the app. Therefore you will have to:
-1. Copy the `UNSECURE_secrets.ts.sample` file and name it `UNSECURE_secrets.ts` (*for security reasons it is ignored, it must never be versioned*)
-2. Add your API key to `UNSECURE_secrets.ts`
+**IMPORTANT!** This app is not ready for production. There is no secure way to add API secrets to the app as of now. Anyhow, to develop and try out the app locally you do the following:
+1. Copy the `.env.sample` file and name it `.env.local`
+2. Add your personal API key (App ID) to the `.env.local` file
 
 Yey, now you can run the app locally!
 
@@ -63,6 +63,11 @@ Formatting: Run `pnpm format` to format your code using Prettier.
 ### Production Build
 
 Run `pnpm build` to build the app for production to the dist folder.
+
+### Preview Production Build
+
+Run `pnpm preview` to try out the production build locally.
+Please note that this is not a production server. It is only intended for previewing the production build locally.
 
 ## Improvements
 

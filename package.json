@@ -13,7 +13,16 @@
     "test:typecheck": "vitest --typecheck",
     "test:ci": "vitest --typecheck --run"
   },
-  "keywords": [],
+  "keywords": [
+    "exchange",
+    "rate",
+    "currency",
+    "converter",
+    "react",
+    "typescript",
+    "vite",
+    "tailwindcss"
+  ],
   "author": "Björn Christensson",
   "license": "ISC",
   "devDependencies": {
