@@ -51,7 +51,7 @@ const Result: FC<ResultProps> = ({ amount, from }) => {
       </div>
 
       <div className="md:grid gap-2 grid-cols-2 lg:grid-cols-3">
-        {targetCurrencies.map((targetCurrency) => (
+        {targetCurrencies.reverse().map((targetCurrency) => (
           <ResultItem
             key={targetCurrency}
             amount={amount}
