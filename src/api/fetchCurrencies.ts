@@ -1,10 +1,10 @@
-import { fetchOptionsGET, oxrAPIBaseURL } from "./config";
+import { BASE_URL, fetchOptionsGET } from "./config";
 import { FetchCurrencies } from "./types";
 
 export const fetchCurrencies: FetchCurrencies = async () => {
   try {
     const response = await fetch(
-      `${oxrAPIBaseURL}/currencies.json`,
+      `${BASE_URL}/currencies.json`,
       fetchOptionsGET,
     );
 

@@ -1,5 +1,4 @@
-import { APP_ID } from "../UNSECURE_secrets";
-import { fetchOptionsGET, oxrAPIBaseURL } from "./config";
+import { APP_ID, BASE_URL, fetchOptionsGET } from "./config";
 
 type FetchConvertValueFromTo = (
   value: number,
@@ -19,7 +18,7 @@ export const fetchConvertValueFromTo: FetchConvertValueFromTo = async (
 ) => {
   try {
     const response = await fetch(
-      `${oxrAPIBaseURL}/convert/${value}/${from}/${to}?app_id=${APP_ID}`,
+      `${BASE_URL}/convert/${value}/${from}/${to}?app_id=${APP_ID}`,
       fetchOptionsGET,
     );
 

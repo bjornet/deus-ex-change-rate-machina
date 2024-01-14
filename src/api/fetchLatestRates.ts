@@ -1,11 +1,10 @@
 import { FetchLatestRates } from "api/types";
-import { APP_ID } from "../UNSECURE_secrets";
-import { fetchOptionsGET, oxrAPIBaseURL } from "./config";
+import { APP_ID, BASE_URL, fetchOptionsGET } from "./config";
 
 export const fetchLatestRates: FetchLatestRates = async () => {
   try {
     const response = await fetch(
-      `${oxrAPIBaseURL}/latest.json?app_id=${APP_ID}`,
+      `${BASE_URL}/latest.json?app_id=${APP_ID}`,
       fetchOptionsGET,
     );
 

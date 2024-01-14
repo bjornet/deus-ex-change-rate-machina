@@ -1,5 +1,4 @@
-import { APP_ID } from "../UNSECURE_secrets";
-import { fetchOptionsGET, oxrAPIBaseURL } from "./config";
+import { APP_ID, BASE_URL, fetchOptionsGET } from "./config";
 import { FetchHistorical } from "./types";
 
 export const fetchHistorical: FetchHistorical = async (date) => {
@@ -9,7 +8,7 @@ export const fetchHistorical: FetchHistorical = async (date) => {
 
   try {
     const response = await fetch(
-      `${oxrAPIBaseURL}/historical/${date}.json?app_id=${APP_ID}}`,
+      `${BASE_URL}/historical/${date}.json?app_id=${APP_ID}}`,
       fetchOptionsGET,
     );
 

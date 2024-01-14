@@ -3,7 +3,5 @@ export const fetchOptionsGET = {
   headers: { accept: "application/json" },
 };
 
-/**
- * @todo Read from env file instead
- */
-export const oxrAPIBaseURL = "https://openexchangerates.org/api";
+export const APP_ID = import.meta.env.VITE_OXR_API_APP_ID;
+export const BASE_URL = import.meta.env.VITE_OXR_API_BASE_URL;
