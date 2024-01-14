@@ -18,7 +18,7 @@ const Input: FC<InputProps> = ({
   <label className="block mb-2 font-bold" htmlFor={id}>
     {label}
     <input
-      className="block w-full p-2 border border-gray-300 rounded-md text-slate-600"
+      className="block w-full p-2 border border-gray-300 rounded-md text-slate-600 outline-slate-400"
       id={id}
       type="text"
       value={value || ""}

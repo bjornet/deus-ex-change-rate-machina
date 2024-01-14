@@ -17,9 +17,9 @@ const Select: FC<SelectProps> = ({
 }) => (
   <label className="block mb-2 font-bold" htmlFor={id}>
     {label}
-    <div className="block w-full pr-2 border rounded-md border-gray-300 bg-white text-slate-600">
+    <div className="relative">
       <select
-        className="w-full h-10 p-2 rounded-md outline-none"
+        className="custom-select w-full h-10 p-2 rounded-md border border-gray-300 bg-white text-slate-600 outline-slate-400 appearance-none"
         id={id}
         onChange={onChange}
         value={selectedValue}
@@ -30,6 +30,7 @@ const Select: FC<SelectProps> = ({
           </option>
         ))}
       </select>
+      <div className="caret" />
     </div>
   </label>
 );
