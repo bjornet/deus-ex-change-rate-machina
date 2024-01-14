@@ -27,6 +27,12 @@ logs
 *.log
 tsconfig.vitest-temp.json
 
+# Env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Misc
 /tmp
 /src/UNSECURE_secrets.ts

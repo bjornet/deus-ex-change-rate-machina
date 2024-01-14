@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "types": ["vite/client"],
     "module": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react-jsx",
