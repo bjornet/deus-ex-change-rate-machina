@@ -5,19 +5,18 @@ import { Select } from "components/Select";
 import { Input } from "components/Input";
 import { Result } from "components/Result";
 import { useExchangeRates } from "context";
-import { useExchange } from "./useExchange";
 
 const Exchange = () => {
-  const { currencies, setTargetCurrencies } = useExchangeRates();
-
   const {
+    currencies,
+    setTargetCurrencies,
     amount,
     setAmount,
     sourceCurrencySelected,
     setCurrencySelected,
     targetCurrencySelected,
     setTargetCurrencySelected,
-  } = useExchange();
+  } = useExchangeRates();
 
   const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
     storeManager.set(StoreSegments.AMOUNT, Number(e.target.value));
@@ -84,7 +83,7 @@ const Exchange = () => {
         }
       </div>
 
-      <Result amount={amount} from={sourceCurrencySelected} />
+      <Result />
     </div>
   );
 };

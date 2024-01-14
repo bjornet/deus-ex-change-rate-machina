@@ -1,17 +1,17 @@
-import { FC } from "react";
 import { Pill } from "components/Pill";
 import { useExchangeRates } from "context";
 import { getExchangeRate } from "components/Exchange/actions";
 import { localizeNumber } from "utils";
 import { ResultItem } from "./ResultItem";
 
-type ResultProps = {
-  amount: number;
-  from: string;
-};
-
-const Result: FC<ResultProps> = ({ amount, from }) => {
-  const { rates, targetCurrencies, setTargetCurrencies } = useExchangeRates();
+const Result = () => {
+  const {
+    rates,
+    targetCurrencies,
+    setTargetCurrencies,
+    amount,
+    sourceCurrencySelected,
+  } = useExchangeRates();
 
   const handleClick = (currency: string) => {
     setTargetCurrencies({
@@ -45,18 +45,21 @@ const Result: FC<ResultProps> = ({ amount, from }) => {
         />
 
         <div className="pr-4">
-          {localizeNumber("sv", from, amount, "decimal", 0)}{" "}
-          <Pill color="green" value={from} />
+          {localizeNumber("sv", sourceCurrencySelected, amount, "decimal", 0)}{" "}
+          <Pill color="green" value={sourceCurrencySelected} />
         </div>
       </div>
 
-      <div className="md:grid gap-2 grid-cols-2 lg:grid-cols-3">
+      <div className="lg:grid gap-2 grid-cols-2 xl:grid-cols-3">
         {targetCurrencies.reverse().map((targetCurrency) => (
           <ResultItem
             key={targetCurrency}
             amount={amount}
             currency={targetCurrency}
-            exchangeRate={getExchangeRate(rates[from], rates[targetCurrency])}
+            exchangeRate={getExchangeRate(
+              rates[sourceCurrencySelected],
+              rates[targetCurrency],
+            )}
             onClick={handleClick}
           />
         ))}

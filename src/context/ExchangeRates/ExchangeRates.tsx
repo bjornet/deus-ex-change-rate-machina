@@ -27,6 +27,12 @@ type ExchangeRatesContextType = {
   currencies: string[];
   targetCurrencies: ReturnType<TargetCurrenciesReducer>;
   setTargetCurrencies: Dispatch<TargetCurrenciesAction>;
+  amount: number;
+  setAmount: Dispatch<number>;
+  sourceCurrencySelected: string;
+  setCurrencySelected: Dispatch<string>;
+  targetCurrencySelected: string;
+  setTargetCurrencySelected: Dispatch<string>;
 };
 
 /**
@@ -37,14 +43,25 @@ export const TARGET_DECIMALS_PRECISION = 4;
 /**
  * @enhancement Read the source currency from the user's location
  */
-export const SOURCE_CURRENCY_DEFAULT = "SEK";
+const SOURCE_CURRENCY_DEFAULT = "SEK";
 
-export const TARGET_CURRENCY_DEFAULT = "USD";
+const TARGET_CURRENCY_DEFAULT = "USD";
 
 const ExchangeRatesContext =
   createContext<Maybe<ExchangeRatesContextType>>(null);
 
 const dateToday = new Date().toISOString();
+
+/**
+ * Restore exchange values on mount
+ */
+const storedSourceCurrency = storeManager.get(
+  StoreSegments.CURRENCY_SELECTED_SOURCE,
+);
+
+const storedTargetCurrency = storeManager.get(
+  StoreSegments.CURRENCY_SELECTED_TARGET,
+);
 
 const storedTargetCurrencies = storeManager.get(
   StoreSegments.CURRENCY_SELECTED_TARGETS,
@@ -54,6 +71,16 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
   const [targetCurrencies, setTargetCurrencies] = useReducer(
     targetCurrenciesReducer,
     storedTargetCurrencies || [TARGET_CURRENCY_DEFAULT],
+  );
+
+  const [amount, setAmount] = useState<number>(1);
+
+  const [sourceCurrencySelected, setCurrencySelected] = useState<string>(
+    storedSourceCurrency || SOURCE_CURRENCY_DEFAULT,
+  );
+
+  const [targetCurrencySelected, setTargetCurrencySelected] = useState<string>(
+    storedTargetCurrency || TARGET_CURRENCY_DEFAULT,
   );
 
   /**
@@ -156,6 +183,7 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
 
   /**
    * Fetch historical rates on mount
+   * @note not used in the app (read the note in src/components/Result/Result.tsx)
    */
   useEffect(() => {
     if (Object.keys(historical).length > 0) return;
@@ -169,8 +197,25 @@ export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
       currencies,
       targetCurrencies,
       setTargetCurrencies,
+      amount,
+      setAmount,
+      sourceCurrencySelected,
+      setCurrencySelected,
+      targetCurrencySelected,
+      setTargetCurrencySelected,
     }),
-    [rates, currencies, targetCurrencies, setTargetCurrencies],
+    [
+      rates,
+      currencies,
+      targetCurrencies,
+      setTargetCurrencies,
+      amount,
+      setAmount,
+      sourceCurrencySelected,
+      setCurrencySelected,
+      targetCurrencySelected,
+      setTargetCurrencySelected,
+    ],
   );
 
   return (
