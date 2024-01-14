@@ -43,7 +43,7 @@ const Exchange = () => {
 
   return (
     <div className="grid gap-4">
-      <div className="bg-sky-800 rounded-md px-8 py-6">
+      <div className="bg-sky-800 rounded-md px-4 py-4">
         <Input
           id="amount"
           value={amount > 0 ? amount.toString() : ""}
