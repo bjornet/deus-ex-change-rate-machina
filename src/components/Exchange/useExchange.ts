@@ -1,3 +1,7 @@
+import {
+  SOURCE_CURRENCY_DEFAULT,
+  TARGET_CURRENCY_DEFAULT,
+} from "context/ExchangeRates/ExchangeRates";
 import { useState } from "react";
 import { storeManager } from "store";
 import { StoreSegments } from "store/enums";
@@ -8,12 +12,6 @@ import { StoreSegments } from "store/enums";
  * and I'm far from sure what is the best balance.
  * - I'm leaving it like this for now, but I would refactor this later and by doing so I expect less code and complexity. WIN!
  */
-
-/**
- * @todo Move this to the config layer: config file or env variables
- */
-const SOURCE_CURRENCY_DEFAULT = "SEK";
-const TARGET_CURRENCY_DEFAULT = "NOK";
 
 /**
  * Restore exchange values on mount

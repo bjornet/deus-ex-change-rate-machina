@@ -66,6 +66,10 @@ const Exchange = () => {
                 selectedValue={sourceCurrencySelected}
               />
 
+              {/**
+               * @enhancement Better UX would be to let the user select currencies
+               * from a select element enhanced with autosuggestion and/or checkboxes
+               */}
               <Select
                 id="target-currency"
                 label="To (select one or more)"

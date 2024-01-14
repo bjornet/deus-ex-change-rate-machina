@@ -30,10 +30,16 @@ type ExchangeRatesContextType = {
 };
 
 /**
- * @todo Make it possible to change the percision of the decimals
- * by adding it to the context and add a handle to change it
+ * @enhancement Make it possible for a user to change the decimals precision
  */
 export const TARGET_DECIMALS_PRECISION = 4;
+
+/**
+ * @enhancement Read the source currency from the user's location
+ */
+export const SOURCE_CURRENCY_DEFAULT = "SEK";
+
+export const TARGET_CURRENCY_DEFAULT = "USD";
 
 const ExchangeRatesContext =
   createContext<Maybe<ExchangeRatesContextType>>(null);
@@ -47,7 +53,7 @@ const storedTargetCurrencies = storeManager.get(
 export const ExchangeRatesProvider: FC<PropsWithChildren> = ({ children }) => {
   const [targetCurrencies, setTargetCurrencies] = useReducer(
     targetCurrenciesReducer,
-    storedTargetCurrencies || [],
+    storedTargetCurrencies || [TARGET_CURRENCY_DEFAULT],
   );
 
   /**
