@@ -33,11 +33,11 @@ const Result = () => {
          * - and get the exchange rates for that date
          * - from that we can calculate the exchange rate for the conversion
          */}
-
         <input
+          disabled
           id="historicalDates"
           name="historicalDates"
-          className="block w-fit p-2 border border-gray-300 rounded-md text-slate-600 text-sm"
+          className="block w-fit p-2 border border-gray-300 rounded-md text-slate-600 text-sm disabled:bg-red-100 disabled:cursor-not-allowed"
           placeholder="Date e.g. 2015-05-17"
           pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
           onChange={() => {}}

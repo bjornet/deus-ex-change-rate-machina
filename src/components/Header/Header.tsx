@@ -19,8 +19,9 @@ const Header: FC<HeaderProps> = ({ title, tag }) => (
      * - storage and in memory cache should note have to change to much
      */}
     <input
+      disabled
       id="amount"
-      className="block w-fit p-2 border border-gray-300 rounded-md text-slate-600 text-sm col-span-2 md:col-span-1"
+      className="block w-fit p-2 border border-gray-300 rounded-md text-slate-600 text-sm col-span-2 md:col-span-1 disabled:bg-red-100 disabled:cursor-not-allowed"
       placeholder="Date e.g. 2017-06-13"
       pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
       onChange={() => {}}
