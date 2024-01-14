@@ -5,7 +5,7 @@ import { ExchangeRatesProvider } from "context";
 const App = () => (
   <div
     id="app-wrapper"
-    className="bg-slate-800 grid auto-rows-min h-screen text-slate-300"
+    className="bg-slate-800 grid auto-rows-min min-h-screen text-slate-300"
   >
     <Header
       title="Deus ex-Change Rate Machina"

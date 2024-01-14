@@ -1,0 +1,16 @@
+/**
+* Custom Global CSS
+*/
+
+.custom-select + .caret::after {
+  content: "";
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border-right: 0.125rem solid black;
+  border-bottom: 0.125rem solid black;
+  width: 0.5rem;
+  height: 0.5rem;
+  pointer-events: none;
+}
