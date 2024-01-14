@@ -1,6 +1,6 @@
-# Exchange Rate
+# Deus ex-Change Rate Machina
 
-A barebone exchange rate calculator.
+Exchange rates made easy!
 
 ## Description
 
@@ -71,8 +71,13 @@ Run `pnpm build` to build the app for production to the dist folder.
 3. **Error Handling** The app is missing error handling. This is a must for a production ready app. The app should handle errors from the API and display a user friendly error message.
 4. **Accessibility** The app is missing accessibility features. This is a must for a production ready app. The app should be accessible for all users.
 5. **Performance** The API does not have to be called again upon page refresh. The app could store the exchange rates in local storage (with a timestamp) and use them on page refresh. This would improve the performance of the app.
+6. **UI Feedback** The UX would gain a lot from adding better feedback on interaction. For example, when the user removes a currency from the list it can be hard for the user to understand what really updated in the UI since other currencies might shift over "to quickly". Simple yet well crafted animations takes us a long way here.
+7. **index.html** The index.html file is located in the root folder. I kept it here since I could not get Vite to read env files (located in the root) in any other way. I expect the env file to be read from the root folder. This is not a big issue, but it would be nice to have the index.html file in the public folder (or possibly in src) instead.
 
-## Whats features are missing?
+## Known incomplete features
 
-**Development of exchange rates over time** I bumped in to restrictions with the free API key. This could have been eleviated by using a paid API key or by mocking the answer from the API.
-I have added notes in the code where I would have implemented this feature and some reasoning around it.
+**Development of exchange rates over time** I bumped in to restrictions with the free API tier, over and over again. This could have been eleviated by either
+- using a paid API key
+- or temporary mocking the answer from the API in frontend
+
+My prefered way to mock this would have been by using Storybook and possible Mock Service Worker. I have added notes in the code where I would have implemented this feature and some reasoning around it.
