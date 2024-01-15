@@ -42,45 +42,47 @@ const Exchange = () => {
   };
 
   return (
-    <div className="grid gap-4">
-      <div className="bg-sky-800 rounded-md px-4 py-4">
-        <Input
-          id="amount"
-          value={amount > 0 ? amount.toString() : ""}
-          label="Amount"
-          placeholder='e.g. "100"'
-          onChange={handleAmountChange}
-        />
-        {
-          /**
-           * @enhancment Add a skeleton loader to show while waiting for currencies
-           */
-          currencies ? (
-            <>
-              <Select
-                id="source-currency"
-                label="From"
-                onChange={handleSourceCurrencyChange}
-                options={currencies}
-                selectedValue={sourceCurrencySelected}
-              />
+    <div className="flex gap-4 flex-col md:flex-row">
+      <div>
+        <div className="bg-sky-800 rounded-md px-4 py-4">
+          <Input
+            id="amount"
+            value={amount > 0 ? amount.toString() : ""}
+            label="Amount"
+            placeholder='e.g. "100"'
+            onChange={handleAmountChange}
+          />
+          {
+            /**
+             * @enhancment Add a skeleton loader to show while waiting for currencies
+             */
+            currencies ? (
+              <>
+                <Select
+                  id="source-currency"
+                  label="From"
+                  onChange={handleSourceCurrencyChange}
+                  options={currencies}
+                  selectedValue={sourceCurrencySelected}
+                />
 
-              {/**
-               * @enhancement Better UX would be to let the user select currencies
-               * from a select element enhanced with autosuggestion and/or checkboxes
-               */}
-              <Select
-                id="target-currency"
-                label="To (select one or more)"
-                onChange={handleTargetCurrencyChange}
-                options={currencies}
-                selectedValue={targetCurrencySelected}
-              />
-            </>
-          ) : (
-            <div>Loading...</div>
-          )
-        }
+                {/**
+                 * @enhancement Better UX would be to let the user select currencies
+                 * from a select element enhanced with autosuggestion and/or checkboxes
+                 */}
+                <Select
+                  id="target-currency"
+                  label="To (select one or more)"
+                  onChange={handleTargetCurrencyChange}
+                  options={currencies}
+                  selectedValue={targetCurrencySelected}
+                />
+              </>
+            ) : (
+              <div>Loading...</div>
+            )
+          }
+        </div>
       </div>
 
       <Result />

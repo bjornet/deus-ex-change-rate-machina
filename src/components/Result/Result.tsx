@@ -24,8 +24,8 @@ const Result = () => {
    * @enhancment Add a skeleton loader to show while waiting for result
    */
   return (
-    <div className="text-2xl text-right">
-      <div className="flex justify-between">
+    <div className="text-2xl text-right flex-auto flex flex-col gap-2">
+      <div className="flex gap-2 justify-between">
         {/**
          * @note This is psuedo code. It's here to demonstrate how a user might be able to
          * - add a historical date to the conversion
@@ -50,7 +50,7 @@ const Result = () => {
         </div>
       </div>
 
-      <div className="lg:grid gap-2 grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-2 lg:grid-cols-2 xl:grid-cols-3">
         {targetCurrencies.reverse().map((targetCurrency) => (
           <ResultItem
             key={targetCurrency}

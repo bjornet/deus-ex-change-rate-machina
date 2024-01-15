@@ -35,7 +35,7 @@ const ResultItem: FC<ResultItemProps> = ({
         showItem ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-4xl mt-2 border-2 border-slate-200 rounded-md relative min-h-10 box-content">
+      <div className="text-4xl border-2 border-slate-200 rounded-md relative min-h-10 box-content">
         <div className="grid gap-2 grid-cols-[1fr_5fr]">
           <div className="row-span-2 text-left">
             <ResultItemClose onClick={handleClick} />
