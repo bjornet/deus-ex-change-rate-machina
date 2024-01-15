@@ -31,11 +31,11 @@ const ResultItem: FC<ResultItemProps> = ({
 
   return (
     <div
-      className={`transition-opacity duration-150 ease-in ${
+      className={`transition-opacity duration-200 ease-in ${
         showItem ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-4xl border-2 border-slate-200 rounded-md relative min-h-10 box-content">
+      <div className="text-4xl border-2 border-slate-200 rounded-md relative min-h-10 box-content bg-slate-800">
         <div className="grid gap-2 grid-cols-[1fr_5fr]">
           <div className="row-span-2 text-left">
             <ResultItemClose onClick={handleClick} />

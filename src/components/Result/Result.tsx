@@ -24,7 +24,7 @@ const Result = () => {
    * @enhancment Add a skeleton loader to show while waiting for result
    */
   return (
-    <div className="text-2xl text-right flex-auto flex flex-col gap-2">
+    <div className="text-2xl text-right flex-auto flex flex-col gap-2 p-4 rounded-md bg-slate-700">
       <div className="flex gap-2 justify-between">
         {/**
          * @note This is psuedo code. It's here to demonstrate how a user might be able to
@@ -44,7 +44,7 @@ const Result = () => {
           value=""
         />
 
-        <div className="pr-4">
+        <div>
           {localizeNumber("sv", sourceCurrencySelected, amount, "decimal", 0)}{" "}
           <Pill color="green" value={sourceCurrencySelected} />
         </div>

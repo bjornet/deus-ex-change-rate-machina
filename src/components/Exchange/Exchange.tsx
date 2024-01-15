@@ -44,7 +44,7 @@ const Exchange = () => {
   return (
     <div className="flex gap-4 flex-col md:flex-row">
       <div>
-        <div className="bg-sky-800 rounded-md px-4 py-4">
+        <div className="bg-sky-900 rounded-md px-4 py-4">
           <Input
             id="amount"
             value={amount > 0 ? amount.toString() : ""}
